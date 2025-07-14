@@ -15,7 +15,7 @@ const Projects = () => {
       solution: 'Built using Stream Video SDK for reliable video streaming, integrated Clerk for secure authentication, and implemented dynamic layout switching for optimal user experience.',
       technologies: ['React', 'Next.js', 'Stream Video SDK', 'Clerk Auth', 'TypeScript', 'Tailwind CSS'],
       demoLink: '#',
-      githubLink: 'https://github.com/mozammilrja',
+      githubLink: 'https://github.com/mozammilrja/Meetrix-meeting-app',
       image: 'https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-blue-500 to-purple-600',
       featured: true,
@@ -30,7 +30,7 @@ const Projects = () => {
       solution: 'Developed a user-friendly interface with customizable templates, automated calculations, PDF generation, and client database management for efficient billing workflows.',
       technologies: ['React', 'Node.js', 'MongoDB', 'PDF.js', 'Express', 'Tailwind CSS'],
       demoLink: '#',
-      githubLink: 'https://github.com/mozammilrja',
+      githubLink: 'https://github.com/mozammilrja/InvoiceCraft',
       image: 'https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-green-500 to-teal-600',
       featured: true,
@@ -217,14 +217,14 @@ const Projects = () => {
             {/* Modal Content */}
             <div className="p-8">
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
+              {/* <div className="grid grid-cols-3 gap-4 mb-8">
                 {Object.entries(selectedProject.stats).map(([key, value], index) => (
                   <div key={index} className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
                     <div className="text-2xl font-bold text-gray-900">{value}</div>
                     <div className="text-sm text-gray-600 capitalize">{key}</div>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               {/* Problem & Solution */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
