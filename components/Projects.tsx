@@ -1,12 +1,30 @@
 'use client';
 
+
 import { useState } from 'react';
-import { ExternalLink, Github, X, Calendar, Users, Zap } from 'lucide-react';
+import { ExternalLink, Github, X, Zap } from 'lucide-react';
+
+// ✅ Type Definition
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  problem: string;
+  solution: string;
+  technologies: string[];
+  demoLink: string;
+  githubLink: string;
+  image: string;
+  gradient: string;
+  featured: boolean;
+  stats: Record<string, string>;
+  features: string[];
+};
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: 'Meetrix Meeting',
@@ -54,7 +72,7 @@ const Projects = () => {
     },
   ];
 
-  const openModal = (project:any) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
     document.body.style.overflow = 'hidden';
   };
