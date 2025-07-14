@@ -54,7 +54,7 @@ const Projects = () => {
     },
   ];
 
-  const openModal = (project) => {
+  const openModal = (project:any) => {
     setSelectedProject(project);
     document.body.style.overflow = 'hidden';
   };
