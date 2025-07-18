@@ -5,19 +5,23 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 // app/layout.tsx
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "Mozammil Raja | Frontend Developer",
   description: "Portfolio of Mozammil Raja – React, Next.js, TypeScript expert",
-  metadataBase: new URL("https://yourdomain.com"), // 🔁 Replace with your actual domain
+  metadataBase: new URL("https://mozammil-portfolio.vercel.app/"),
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "Mozammil Raja | Frontend Developer",
     description: "Building scalable web apps with React, Next.js & Web3",
-    url: "https://yourdomain.com",
+    url: "https://mozammil-portfolio.vercel.app/",
     siteName: "Mozammil Raja Portfolio",
     images: [
       {
-        url: "/profile.png", // ✅ Use your image from public folder
+        url: "/profile.png",
         width: 1200,
         height: 630,
         alt: "Mozammil Raja Portfolio",
@@ -33,6 +37,7 @@ export const metadata = {
     images: ["/profile.png"],
   },
 };
+
 
 export default function RootLayout({
   children,
