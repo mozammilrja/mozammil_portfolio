@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Experience from "@/components/Experience";
 
 // Lazy load below-the-fold components
 const About = dynamic(() => import("@/components/About"), { ssr: false });
@@ -27,6 +28,9 @@ export default function Home() {
 
         <section id="about">
           <About />
+        </section>
+        <section id="experience">
+          <Experience />
         </section>
 
         <section id="projects">
