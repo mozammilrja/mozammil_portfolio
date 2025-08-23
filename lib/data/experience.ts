@@ -57,18 +57,18 @@ export const experienceData: Experience[] = [
     achievements: ['Sub-second latency system', 'Most Innovative Project award', '25% faster load times'],
     type: 'fulltime'
   },
-  {
-    id: '4',
-    role: 'Software Engineer',
-    company: 'Staple Logic',
-    duration: 'September 2021 – March 2022',
-    location: 'Chandigarh, India',
-    description: [
-      'Redesigned the UI of a courier delivery platform using React.js, Redux, and Bootstrap, resulting in a 40% drop in processing time and a 25% increase in conversion rates.',
-      'Restructured the frontend architecture and applied Redux to manage shared state, reducing related bugs by 30% across the application.'
-    ],
-    techStack: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Redux', 'Next.js', 'REST APIs'],
-    achievements: ['40% drop in processing time', '25% increase in conversion rates', '30% reduction in frontend bugs'],
-    type: 'fulltime'
-  }
+    // {
+    //   id: '4',
+    //   role: 'Software Engineer',
+    //   company: 'Staple Logic',
+    //   duration: 'September 2021 – March 2022',
+    //   location: 'Chandigarh, India',
+    //   description: [
+    //     'Redesigned the UI of a courier delivery platform using React.js, Redux, and Bootstrap, resulting in a 40% drop in processing time and a 25% increase in conversion rates.',
+    //     'Restructured the frontend architecture and applied Redux to manage shared state, reducing related bugs by 30% across the application.'
+    //   ],
+    //   techStack: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Redux', 'Next.js', 'REST APIs'],
+    //   achievements: ['40% drop in processing time', '25% increase in conversion rates', '30% reduction in frontend bugs'],
+    //   type: 'fulltime'
+    // }
 ];

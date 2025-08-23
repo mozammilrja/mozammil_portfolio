@@ -1,11 +1,15 @@
 import dynamic from "next/dynamic";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Experience from "@/components/Experience";
 
-// Lazy load below-the-fold components
+// Lazy load all components
+const Header = dynamic(() => import("@/components/Header"), { ssr: false });
+const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
 const About = dynamic(() => import("@/components/About"), { ssr: false });
-const Projects = dynamic(() => import("@/components/Projects"), { ssr: false });
+const Experience = dynamic(() => import("@/components/Experience"), {
+  ssr: false,
+});
+const Projects = dynamic(() => import("@/components/Projects"), {
+  ssr: false,
+});
 const TechStack = dynamic(() => import("@/components/TechStack"), {
   ssr: false,
 });
@@ -29,6 +33,7 @@ export default function Home() {
         <section id="about">
           <About />
         </section>
+
         <section id="experience">
           <Experience />
         </section>
