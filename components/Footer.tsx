@@ -1,3 +1,12 @@
+import { LINKS } from "@/lib/data/links";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+
+const quickLinks = [
+  { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
+
 const Footer = () => {
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12 px-4 sm:px-6 lg:px-8">
@@ -5,45 +14,79 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">Mozammil Raja</h3>
+            <h3 className="text-xl font-semibold mb-4 text-white">
+              Mozammil Raja
+            </h3>
             <p className="text-gray-400 dark:text-gray-300 leading-relaxed">
-              Frontend Developer passionate about creating exceptional web experiences with modern technologies.
+              Frontend Developer passionate about creating exceptional web
+              experiences with modern technologies.
             </p>
+
+            {/* Social Links */}
+            <div className="flex gap-4 mt-4">
+              <a
+                href={LINKS.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="GitHub">
+                <Github className="w-6 h-6" />
+              </a>
+              <a
+                href={LINKS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="LinkedIn">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a
+                href={LINKS.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Twitter">
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a
+                href={`mailto:${LINKS.email}`}
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Email">
+                <Mail className="w-6 h-6" />
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+          <nav>
+            <h3 className="text-xl font-semibold mb-4 text-white">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#about" className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
+              {quickLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className="text-gray-400 dark:text-gray-300 hover:text-white transition-colors">
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Contact Info */}
-          <div>
+          <address className="not-italic">
             <h3 className="text-xl font-semibold mb-4 text-white">Contact</h3>
             <div className="space-y-2 text-gray-400 dark:text-gray-300">
-              <p>mozammilraja0218@gmail.com</p>
-              <p>+91 8102472325</p>
-              <p>Delhi NCR, India</p>
+              <p>{LINKS.email}</p>
+              <p>{LINKS.phone}</p>
+              <p>{LINKS.location}</p>
             </div>
-          </div>
+          </address>
         </div>
 
+        {/* Copyright */}
         <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400 dark:text-gray-300">
             © {new Date().getFullYear()} Mozammil Raja. All rights reserved.

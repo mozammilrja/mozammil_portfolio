@@ -10,6 +10,7 @@ import {
   MapPin,
   Clock,
 } from "lucide-react";
+import { LINKS } from "@/lib/data/links";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -95,27 +96,34 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="flex gap-4 justify-center lg:justify-start">
+              {/* GitHub */}
               <a
-                href="https://github.com/mozammilrja"
+                href={LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group"
+                className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group"
                 aria-label="GitHub Profile">
-                <Github className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white" />
+                <Github className="w-6 h-6 text-gray-800 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white" />
               </a>
+
+              {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/in/mozammil-raja"
+                href={LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group"
+                className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group"
                 aria-label="LinkedIn Profile">
-                <Linkedin className="w-6 h-6 text-blue-600 group-hover:text-blue-700" />
+                <Linkedin className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-200" />
               </a>
+
+              {/* Email */}
               <a
-                href="mailto:mozammilraja0218@gmail.com"
-                className="w-12 h-12 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group"
+                href={LINKS.emailHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md flex items-center justify-center hover:shadow-lg hover:scale-110 transition-all duration-200 group"
                 aria-label="Send Email">
-                <Mail className="w-6 h-6 text-red-500 group-hover:text-red-600" />
+                <Mail className="w-6 h-6 text-red-500 dark:text-red-400 group-hover:text-red-600 dark:group-hover:text-red-300" />
               </a>
             </div>
           </div>

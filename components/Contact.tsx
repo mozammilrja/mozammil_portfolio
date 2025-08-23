@@ -9,7 +9,9 @@ import {
   Linkedin,
   Send,
   CheckCircle,
+  Briefcase,
 } from "lucide-react";
+import { LINKS } from "@/lib/data/links";
 
 const Contact = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -22,12 +24,13 @@ const Contact = () => {
 
     if (!form.current) return;
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
-
     emailjs
-      .sendForm(serviceId, templateId, form.current, publicKey)
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
       .then(() => {
         setSuccess(true);
         form.current?.reset();
@@ -47,90 +50,110 @@ const Contact = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            I'm currently looking for new opportunities. Whether you have a
-            question or just want to say hi, I'll try my best to get back to
-            you!
+            I&apos;m currently looking for new opportunities. Whether you have a
+            question or just want to say hi, I&apos;ll try my best to get back
+            to you!
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 overflow-hidden">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Get In Touch
               </h3>
-
               <div className="space-y-6">
+                {/* Email */}
                 <a
-                  href="mailto:mozammilraja0218@gmail.com"
-                  className="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors group">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  href={LINKS.emailHref}
+                  className="flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors group min-w-0"
+                  aria-label="Send Email">
+                  <div className="w-12 h-12 flex-shrink-0 bg-blue-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-semibold text-gray-900 dark:text-white">
                       Email
                     </p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      mozammilraja0218@gmail.com
+                    <p className="text-gray-600 dark:text-gray-300 truncate">
+                      {LINKS.email}
                     </p>
                   </div>
                 </a>
 
+                {/* Phone */}
                 <a
-                  href="tel:+918102472325"
-                  className="flex items-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors group">
-                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  href={LINKS.phoneHref}
+                  className="flex items-center gap-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors group min-w-0"
+                  aria-label="Call Phone">
+                  <div className="w-12 h-12 flex-shrink-0 bg-green-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-semibold text-gray-900 dark:text-white">
                       Phone
                     </p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      +91 8102472325
+                    <p className="text-gray-600 dark:text-gray-300 truncate">
+                      {LINKS.phone}
                     </p>
                   </div>
                 </a>
 
-                <div className="flex items-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-4">
+                {/* Location */}
+                <div className="flex items-center gap-4 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg min-w-0">
+                  <div className="w-12 h-12 flex-shrink-0 bg-purple-600 rounded-lg flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-semibold text-gray-900 dark:text-white">
                       Location
                     </p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Delhi NCR / Remote
+                    <p className="text-gray-600 dark:text-gray-300 truncate">
+                      {LINKS.location}
                     </p>
                   </div>
                 </div>
               </div>
 
+              {/* Social Links */}
               <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
                   Connect with me
                 </h4>
                 <div className="flex space-x-4">
+                  {/* GitHub */}
                   <a
-                    href="https://github.com/mozammilrja"
+                    href={LINKS.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover:scale-110 transform">
+                    className="w-12 h-12 flex-shrink-0 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover:scale-105 transform"
+                    aria-label="GitHub Profile">
                     <Github className="w-6 h-6 text-white" />
                   </a>
+
+                  {/* LinkedIn */}
                   <a
-                    href="https://www.linkedin.com/in/mozammil-raja"
+                    href={LINKS.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-blue-700 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors hover:scale-110 transform">
+                    className="w-12 h-12 flex-shrink-0 bg-blue-700 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors hover:scale-105 transform"
+                    aria-label="LinkedIn Profile">
                     <Linkedin className="w-6 h-6 text-white" />
+                  </a>
+
+                  {/* Hire Me */}
+                  <a
+                    href={LINKS.hireMe}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 flex-shrink-0 bg-green-600 rounded-lg flex items-center justify-center hover:bg-green-500 transition-colors hover:scale-105 transform"
+                    aria-label="Hire Me">
+                    <Briefcase className="w-6 h-6 text-white" />
                   </a>
                 </div>
               </div>
@@ -145,9 +168,7 @@ const Contact = () => {
 
             <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Name
                 </label>
                 <input
@@ -160,9 +181,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Email
                 </label>
                 <input
@@ -175,9 +194,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Subject
                 </label>
                 <input
@@ -190,9 +207,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Message
                 </label>
                 <textarea
@@ -206,9 +221,9 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl">
+                className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed">
                 {loading ? "Sending..." : "Send Message"}
-                <Send className="ml-2 w-4 h-4" />
+                {!loading && <Send className="ml-2 w-4 h-4" />}
               </button>
 
               {success && (
