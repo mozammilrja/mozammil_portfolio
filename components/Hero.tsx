@@ -81,21 +81,20 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
-                href={LINKS.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 group">
-                <Download className="w-5 h-5 mr-2" />
-                <span>Download Resume</span>
-              </a>
-
-              <a
                 href={LINKS.hireMe}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 group">
                 <Briefcase className="w-5 h-5 mr-2" />
                 <span>Hire Me</span>
+              </a>
+              <a
+                href={LINKS.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 group">
+                <Download className="w-5 h-5 mr-2" />
+                <span>Download Resume</span>
               </a>
 
               <a
