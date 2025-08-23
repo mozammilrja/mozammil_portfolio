@@ -1,5 +1,3 @@
-# 🌐 Mozammil Raja - Frontend Developer Portfolio  
-
 # 👋 Hi, I'm Mozammil Raja  
 
 🚀 **Software Engineer | Frontend Developer (React & Next.js Specialist)**  
