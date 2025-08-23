@@ -1,23 +1,51 @@
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Projects from '@/components/Projects';
-import TechStack from '@/components/TechStack';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import dynamic from "next/dynamic";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+
+// Lazy load below-the-fold components
+const About = dynamic(() => import("@/components/About"), { ssr: false });
+const Projects = dynamic(() => import("@/components/Projects"), { ssr: false });
+const TechStack = dynamic(() => import("@/components/TechStack"), {
+  ssr: false,
+});
+const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
-      <Header />
+      {/* Semantic Header */}
+      <header>
+        <Header />
+      </header>
+
+      {/* Semantic Main Content */}
       <main>
-        <Hero />
-        <About />
-        <Projects />
-        <TechStack />
-        <Contact />
+        <section id="hero">
+          <Hero />
+        </section>
+
+        <section id="about">
+          <About />
+        </section>
+
+        <section id="projects">
+          <Projects />
+        </section>
+
+        <section id="techstack">
+          <TechStack />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
-      <Footer />
+
+      {/* Semantic Footer */}
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
