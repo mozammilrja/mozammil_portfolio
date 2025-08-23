@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import {
   Mail,
@@ -18,29 +18,32 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+  const sendEmail = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!form.current) return;
 
-    if (!form.current) return;
+      setLoading(true);
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        form.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      )
-      .then(() => {
-        setSuccess(true);
-        form.current?.reset();
-      })
-      .catch((error) => console.error("FAILED...", error))
-      .finally(() => {
-        setLoading(false);
-        setTimeout(() => setSuccess(false), 5000);
-      });
-  };
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+          form.current,
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        )
+        .then(() => {
+          setSuccess(true);
+          form.current?.reset();
+        })
+        .catch((error) => console.error("FAILED...", error))
+        .finally(() => {
+          setLoading(false);
+          setTimeout(() => setSuccess(false), 5000);
+        });
+    },
+    [form]
+  );
 
   return (
     <section
@@ -52,7 +55,7 @@ const Contact = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-4" />
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             I&apos;m currently looking for new opportunities. Whether you have a
             question or just want to say hi, I&apos;ll try my best to get back
@@ -67,42 +70,48 @@ const Contact = () => {
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Get In Touch
               </h3>
-              <div className="space-y-6">
-                {/* Email */}
-                <a
-                  href={LINKS.emailHref}
-                  className="flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors group min-w-0"
-                  aria-label="Send Email">
-                  <div className="w-12 h-12 flex-shrink-0 bg-blue-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-semibold text-gray-900 dark:text-white">
-                      Email
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 truncate">
-                      {LINKS.email}
-                    </p>
-                  </div>
-                </a>
 
-                {/* Phone */}
-                <a
-                  href={LINKS.phoneHref}
-                  className="flex items-center gap-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors group min-w-0"
-                  aria-label="Call Phone">
-                  <div className="w-12 h-12 flex-shrink-0 bg-green-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-                    <Phone className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-semibold text-gray-900 dark:text-white">
-                      Phone
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 truncate">
-                      {LINKS.phone}
-                    </p>
-                  </div>
-                </a>
+              <div className="space-y-6">
+                {[
+                  {
+                    label: "Email",
+                    href: LINKS.emailHref,
+                    icon: Mail,
+                    bg: "bg-blue-600",
+                    hoverBg: "group-hover:scale-105",
+                    value: LINKS.email,
+                  },
+                  {
+                    label: "Phone",
+                    href: LINKS.phoneHref,
+                    icon: Phone,
+                    bg: "bg-green-600",
+                    hoverBg: "group-hover:scale-105",
+                    value: LINKS.phone,
+                  },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="flex items-center gap-4 p-4 rounded-lg transition-colors min-w-0 bg-gray-50 dark:bg-gray-900/20 hover:bg-gray-100 dark:hover:bg-gray-900/30 group"
+                      aria-label={item.label}>
+                      <div
+                        className={`w-12 h-12 flex-shrink-0 ${item.bg} rounded-lg flex items-center justify-center transition-transform`}>
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-gray-900 dark:text-white">
+                          {item.label}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300 truncate">
+                          {item.value}
+                        </p>
+                      </div>
+                    </a>
+                  );
+                })}
 
                 {/* Location */}
                 <div className="flex items-center gap-4 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg min-w-0">
@@ -126,35 +135,34 @@ const Contact = () => {
                   Connect with me
                 </h4>
                 <div className="flex space-x-4">
-                  {/* GitHub */}
-                  <a
-                    href={LINKS.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 flex-shrink-0 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors hover:scale-105 transform"
-                    aria-label="GitHub Profile">
-                    <Github className="w-6 h-6 text-white" />
-                  </a>
-
-                  {/* LinkedIn */}
-                  <a
-                    href={LINKS.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 flex-shrink-0 bg-blue-700 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors hover:scale-105 transform"
-                    aria-label="LinkedIn Profile">
-                    <Linkedin className="w-6 h-6 text-white" />
-                  </a>
-
-                  {/* Hire Me */}
-                  <a
-                    href={LINKS.hireMe}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 flex-shrink-0 bg-green-600 rounded-lg flex items-center justify-center hover:bg-green-500 transition-colors hover:scale-105 transform"
-                    aria-label="Hire Me">
-                    <Briefcase className="w-6 h-6 text-white" />
-                  </a>
+                  {[LINKS.github, LINKS.linkedin, LINKS.hireMe].map(
+                    (href, idx) => {
+                      const icons = [Github, Linkedin, Briefcase];
+                      const colors = [
+                        "bg-gray-800",
+                        "bg-blue-700",
+                        "bg-green-600",
+                      ];
+                      const Icon = icons[idx];
+                      return (
+                        <a
+                          key={href}
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`${colors[idx]} w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center hover:scale-105 transform transition-colors`}
+                          aria-label={
+                            idx === 0
+                              ? "GitHub"
+                              : idx === 1
+                              ? "LinkedIn"
+                              : "Hire Me"
+                          }>
+                          <Icon className="w-6 h-6 text-white" />
+                        </a>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>
@@ -165,46 +173,40 @@ const Contact = () => {
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
               Send a Message
             </h3>
-
             <form ref={form} onSubmit={sendEmail} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="What's this about?"
-                />
-              </div>
+              {[
+                {
+                  label: "Name",
+                  type: "text",
+                  name: "name",
+                  placeholder: "Your name",
+                },
+                {
+                  label: "Email",
+                  type: "email",
+                  name: "email",
+                  placeholder: "your.email@example.com",
+                },
+                {
+                  label: "Subject",
+                  type: "text",
+                  name: "subject",
+                  placeholder: "What's this about?",
+                },
+              ].map((field) => (
+                <div key={field.name}>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {field.label}
+                  </label>
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    required
+                    placeholder={field.placeholder}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  />
+                </div>
+              ))}
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -214,8 +216,9 @@ const Contact = () => {
                   name="message"
                   rows={5}
                   required
+                  placeholder="Your message..."
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-                  placeholder="Your message..."></textarea>
+                />
               </div>
 
               <button

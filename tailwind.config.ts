@@ -11,8 +11,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -62,22 +61,8 @@ const config: Config = {
         },
       },
       keyframes: {
-        'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-        },
-        'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
-        },
+        'accordion-down': { from: { height: '0' }, to: { height: 'var(--radix-accordion-content-height)' } },
+        'accordion-up': { from: { height: 'var(--radix-accordion-content-height)' }, to: { height: '0' } },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -85,6 +70,21 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    // Ensure dynamic classes aren't purged
+    'animate-bounce',
+    'animate-ping',
+    'animate-pulse',
+    'bg-blue-600',
+    'text-blue-400',
+    'dark:text-blue-400',
+    'bg-green-600',
+    'hover:bg-green-700',
+  ],
   plugins: [require('tailwindcss-animate')],
+  future: {
+    hoverOnlyWhenSupported: true, // reduces unnecessary hover styles
+  },
 };
+
 export default config;

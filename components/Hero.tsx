@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   Github,
   Linkedin,
@@ -9,6 +10,7 @@ import {
   ArrowRight,
   MapPin,
   Clock,
+  Briefcase,
 } from "lucide-react";
 import { LINKS } from "@/lib/data/links";
 
@@ -23,7 +25,7 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center px-6 lg:px-8 pt-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto w-full relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
+          {/* ================= Left Content ================= */}
           <div
             className={`space-y-8 text-center lg:text-left transition-all duration-1000 ${
               isVisible
@@ -36,7 +38,7 @@ const Hero = () => {
               Available for immediate joining
             </div>
 
-            {/* Main Headline */}
+            {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                 Frontend{" "}
@@ -55,7 +57,7 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Intro Text */}
+            {/* Intro */}
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl">
               Currently open to new frontend opportunities. I specialize in
               crafting pixel-perfect, performance-driven UIs with{" "}
@@ -79,24 +81,34 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
-                href="https://drive.google.com/file/d/1UrVfPiZ3Si-A4PzKBktJJp4yJCpEAlEs/view"
+                href={LINKS.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 group">
-                <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                📄 Download Resume
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 group">
+                <Download className="w-5 h-5 mr-2" />
+                <span>Download Resume</span>
               </a>
+
+              <a
+                href={LINKS.hireMe}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 group">
+                <Briefcase className="w-5 h-5 mr-2" />
+                <span>Hire Me</span>
+              </a>
+
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-xl border-2 border-blue-600 dark:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 group">
-                📬 Let's Connect
+                className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-xl border-2 border-blue-600 dark:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 group">
+                <Mail className="w-5 h-5 mr-2" />
+                <span>Let’s Connect</span>
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
             {/* Social Links */}
             <div className="flex gap-4 justify-center lg:justify-start">
-              {/* GitHub */}
               <a
                 href={LINKS.github}
                 target="_blank"
@@ -106,7 +118,6 @@ const Hero = () => {
                 <Github className="w-6 h-6 text-gray-800 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white" />
               </a>
 
-              {/* LinkedIn */}
               <a
                 href={LINKS.linkedin}
                 target="_blank"
@@ -116,7 +127,6 @@ const Hero = () => {
                 <Linkedin className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-200" />
               </a>
 
-              {/* Email */}
               <a
                 href={LINKS.emailHref}
                 target="_blank"
@@ -128,22 +138,25 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - Profile Image */}
+          {/* ================= Right Content ================= */}
           <div
             className={`flex justify-center lg:justify-end transition-all duration-1000 delay-300 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}>
-            <div className="relative">
-              <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 p-1 shadow-2xl">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center overflow-hidden">
-                  <img
-                    src="/profile.png"
-                    alt="Profile"
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                </div>
+            <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 p-1 shadow-2xl" />
+              <div className="absolute inset-1 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                <Image
+                  src="/profile.avif"
+                  alt="Mozammil Raja - Frontend Developer Portfolio"
+                  fill
+                  className="object-cover rounded-full"
+                  priority
+                  placeholder="blur"
+                  blurDataURL="/profile.avif"
+                />
               </div>
 
               {/* Floating Elements */}

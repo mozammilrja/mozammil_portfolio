@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mozammil-portfolio.vercel.app
+
+# Sitemaps
+Sitemap: https://mozammil-portfolio.vercel.app/sitemap.xml
