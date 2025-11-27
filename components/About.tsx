@@ -17,49 +17,46 @@ const About = () => {
           <div className="prose prose-lg max-w-none">
             {/* Intro */}
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
-              I'm a{" "}
+              I am a results-driven{" "}
               <strong className="text-indigo-600 dark:text-indigo-400">
                 Frontend Developer
               </strong>{" "}
-              with{" "}
+              with over{" "}
               <strong className="text-indigo-600 dark:text-indigo-400">
-                3.5+ years of experience
+                3.5 years of experience
               </strong>{" "}
-              crafting modern, scalable, and high-performance web applications.
-              My core expertise lies in{" "}
-              <strong>React, Next.js, TypeScript, and Web3</strong>, empowering
-              me to build{" "}
+              in building scalable, high-performance web applications. Specializing
+              in <strong>React, Next.js, TypeScript, and Web3</strong>, I focus on
+              delivering{" "}
               <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                seamless, engaging user experiences
+                seamless user experiences
               </span>{" "}
-              that also drive measurable business results.
+              that drive business growth and technical excellence.
             </p>
 
             {/* Middle */}
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
-              I’m passionate about designing{" "}
-              <strong>scalable frontend architectures</strong> that are both
-              visually striking and technically robust. By blending{" "}
-              <strong>clean code principles</strong> with{" "}
-              <strong>modern engineering practices</strong>, I deliver products
-              that are not only functional but also maintainable for the long
-              term.
+              I am passionate about architecting{" "}
+              <strong>robust frontend solutions</strong> that balance visual
+              aesthetics with technical scalability. Committed to{" "}
+              <strong>clean code</strong> and{" "}
+              <strong>modern engineering practices</strong>, I ensure every
+              product I build is maintainable, efficient, and future-proof.
             </p>
 
             {/* Current Focus */}
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8">
-              At present, I’m exploring{" "}
+              Currently seeking challenging{" "}
               <strong className="text-indigo-600 dark:text-indigo-400">
-                exciting frontend opportunities
+                frontend opportunities
               </strong>{" "}
-              in <strong>Delhi NCR</strong> or{" "}
-              <strong>remote-first teams</strong>. My goal is to contribute to
-              innovative projects, push creative boundaries, and stay at the
-              forefront of{" "}
+              in <strong>Delhi NCR</strong> or <strong>remote environments</strong>.
+              I am eager to contribute to innovative projects, leverage{" "}
               <span className="font-semibold text-indigo-600 dark:text-indigo-400">
                 emerging technologies
-              </span>{" "}
-              while growing as a developer and collaborator.
+              </span>
+              , and collaborate with forward-thinking teams to push the boundaries
+              of web development.
             </p>
 
             {/* Highlights */}
