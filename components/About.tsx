@@ -1,6 +1,7 @@
 import { CheckCircle } from "lucide-react";
 
 const About = () => {
+  console.error("erro")
   return (
     <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
