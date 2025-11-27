@@ -70,38 +70,39 @@ const config: Config = {
       },
     },
   },
- safelist: [
-  // Background colors
-  "bg-yellow-200", "bg-yellow-300", "bg-yellow-400",
-  "bg-blue-200", "bg-blue-300", "bg-blue-400", "bg-blue-700",
-  "bg-orange-200", "bg-orange-300", "bg-orange-400",
-  "bg-indigo-200", "bg-indigo-300",
-  "bg-purple-200",
-  "bg-cyan-200",
-  "bg-green-200", "bg-green-300",
-  "bg-pink-200", "bg-pink-300",
-  "bg-lime-200",
-  "bg-emerald-200",
-  "bg-teal-200", "bg-teal-300",
-  "bg-red-200", "bg-red-300",
-  "bg-gray-200", "bg-gray-300",
+  safelist: [
+    // Background colors
+    "bg-yellow-200", "bg-yellow-300", "bg-yellow-400",
+    "bg-blue-200", "bg-blue-300", "bg-blue-400", "bg-blue-700",
+    "bg-orange-200", "bg-orange-300", "bg-orange-400",
+    "bg-indigo-200", "bg-indigo-300", "bg-indigo-400", "bg-indigo-600", "bg-indigo-700",
+    "bg-violet-200", "bg-violet-300", "bg-violet-400", "bg-violet-600", "bg-violet-700",
+    "bg-purple-200",
+    "bg-cyan-200",
+    "bg-green-200", "bg-green-300",
+    "bg-pink-200", "bg-pink-300",
+    "bg-lime-200",
+    "bg-emerald-200",
+    "bg-teal-200", "bg-teal-300",
+    "bg-red-200", "bg-red-300",
+    "bg-gray-200", "bg-gray-300",
 
-  // Text colors
-  "text-yellow-900", "text-blue-900", "text-orange-900",
-  "text-indigo-900", "text-purple-900", "text-cyan-900",
-  "text-green-900", "text-pink-900", "text-lime-900",
-  "text-emerald-900", "text-teal-900", "text-red-900",
-  "text-gray-900", "text-white",
+    // Text colors
+    "text-yellow-900", "text-blue-900", "text-orange-900",
+    "text-indigo-900", "text-purple-900", "text-cyan-900", "text-violet-900",
+    "text-green-900", "text-pink-900", "text-lime-900",
+    "text-emerald-900", "text-teal-900", "text-red-900",
+    "text-gray-900", "text-white",
 
-  // Dark mode variants
-  "dark:text-white", "dark:text-blue-400",
-  "dark:bg-sky-700", "dark:bg-blue-400",
+    // Dark mode variants
+    "dark:text-white", "dark:text-indigo-400", "dark:text-violet-400",
+    "dark:bg-sky-700", "dark:bg-indigo-400", "dark:bg-violet-400",
 
-  // Animations you already had
-  "animate-bounce", "animate-ping", "animate-pulse",
-  "hover:bg-green-700",
-],
-plugins: [require('tailwindcss-animate')],
+    // Animations you already had
+    "animate-bounce", "animate-ping", "animate-pulse",
+    "hover:bg-green-700",
+  ],
+  plugins: [require('tailwindcss-animate')],
   future: {
     hoverOnlyWhenSupported: true, // reduces unnecessary hover styles
   },

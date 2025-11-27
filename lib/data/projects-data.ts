@@ -37,7 +37,7 @@ export const projects: Project[] = [
     githubLink: "https://github.com/mozammilrja/Meetrix-meeting-app",
     image:
       "https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=800",
-    gradient: "from-blue-500 to-purple-600",
+    gradient: "from-indigo-500 to-violet-600",
     featured: true,
     stats: { users: "10K+", uptime: "99.9%", meetings: "50K+" },
     features: [
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     githubLink: "https://github.com/mozammilrja/LMS-Dashboard",
     image:
       "https://images.pexels.com/photos/5212322/pexels-photo-5212322.jpeg?auto=compress&cs=tinysrgb&w=800",
-    gradient: "from-blue-600 to-sky-500",
+    gradient: "from-indigo-600 to-sky-500",
     featured: true,
     stats: {
       usersTracked: "200+",

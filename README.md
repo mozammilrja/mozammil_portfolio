@@ -55,5 +55,3 @@ A **multi-tenant invoicing app** designed for SaaS platforms with:
 - 💻 Portfolio: [github.com/mozammilrja](https://github.com/mozammilrja)  
 
 ---
-
-⭐️ _"Let’s build something extraordinary together!"_  

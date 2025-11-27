@@ -5,22 +5,22 @@ import { experienceData } from "@/lib/data/experience";
 const Experience = () => (
   <section
     id="experience"
-    className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
-    <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
+    className="py-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
           Experience
         </h2>
-        <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto rounded-full"></div>
+        <div className="w-20 h-1 bg-indigo-600 dark:bg-indigo-400 mx-auto rounded-full"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto space-y-12">
+      <div className="w-full space-y-8">
         {experienceData.map((job) => (
           <div
             key={job.id}
-            className="relative bg-white dark:bg-[#1e2a47] p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+            className="relative bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
             {/* Left colored strip */}
-            <div className="absolute left-0 top-0 h-full w-1.5 bg-blue-500 rounded-l-xl"></div>
+            <div className="absolute left-0 top-0 h-full w-1.5 bg-indigo-500 rounded-l-xl"></div>
 
             {/* Content */}
             <div className="relative">

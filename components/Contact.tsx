@@ -48,14 +48,14 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto">
+      className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-4" />
+          <div className="w-20 h-1 bg-indigo-600 dark:bg-indigo-400 mx-auto mb-4" />
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             I&apos;m currently looking for new opportunities. Whether you have a
             question or just want to say hi, I&apos;ll try my best to get back
@@ -77,17 +77,19 @@ const Contact = () => {
                     label: "Email",
                     href: LINKS.emailHref,
                     icon: Mail,
-                    bg: "bg-blue-600",
-                    hoverBg: "group-hover:scale-105",
                     value: LINKS.email,
                   },
                   {
                     label: "Phone",
                     href: LINKS.phoneHref,
                     icon: Phone,
-                    bg: "bg-green-600",
-                    hoverBg: "group-hover:scale-105",
                     value: LINKS.phone,
+                  },
+                  {
+                    label: "Location",
+                    href: "#",
+                    icon: MapPin,
+                    value: LINKS.location,
                   },
                 ].map((item) => {
                   const Icon = item.icon;
@@ -95,14 +97,14 @@ const Contact = () => {
                     <a
                       key={item.label}
                       href={item.href}
-                      className="flex items-center gap-4 p-4 rounded-lg transition-colors min-w-0 bg-gray-50 dark:bg-gray-900/20 hover:bg-gray-100 dark:hover:bg-gray-900/30 group"
+                      className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 bg-gray-50 dark:bg-gray-900/50 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-900 group"
                       aria-label={item.label}>
                       <div
-                        className={`w-12 h-12 flex-shrink-0 ${item.bg} rounded-lg flex items-center justify-center transition-transform`}>
-                        <Icon className="w-6 h-6 text-white" />
+                        className="w-12 h-12 flex-shrink-0 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
                       </div>
                       <div className="min-w-0">
-                        <p className="font-semibold text-gray-900 dark:text-white">
+                        <p className="font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                           {item.label}
                         </p>
                         <p className="text-gray-600 dark:text-gray-300 truncate">
@@ -112,21 +114,6 @@ const Contact = () => {
                     </a>
                   );
                 })}
-
-                {/* Location */}
-                <div className="flex items-center gap-4 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg min-w-0">
-                  <div className="w-12 h-12 flex-shrink-0 bg-purple-600 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-semibold text-gray-900 dark:text-white">
-                      Location
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 truncate">
-                      {LINKS.location}
-                    </p>
-                  </div>
-                </div>
               </div>
 
               {/* Social Links */}
@@ -135,34 +122,21 @@ const Contact = () => {
                   Connect with me
                 </h4>
                 <div className="flex space-x-4">
-                  {[LINKS.github, LINKS.linkedin, LINKS.hireMe].map(
-                    (href, idx) => {
-                      const icons = [Github, Linkedin, Briefcase];
-                      const colors = [
-                        "bg-gray-800",
-                        "bg-blue-700",
-                        "bg-green-600",
-                      ];
-                      const Icon = icons[idx];
-                      return (
-                        <a
-                          key={href}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`${colors[idx]} w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center hover:scale-105 transform transition-colors`}
-                          aria-label={
-                            idx === 0
-                              ? "GitHub"
-                              : idx === 1
-                              ? "LinkedIn"
-                              : "Hire Me"
-                          }>
-                          <Icon className="w-6 h-6 text-white" />
-                        </a>
-                      );
-                    }
-                  )}
+                  {[
+                    { href: LINKS.github, icon: Github, label: "GitHub" },
+                    { href: LINKS.linkedin, icon: Linkedin, label: "LinkedIn" },
+                    { href: LINKS.hireMe, icon: Briefcase, label: "Hire Me" },
+                  ].map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 flex-shrink-0 bg-gray-50 dark:bg-gray-900/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 rounded-xl flex items-center justify-center hover:scale-110 transform transition-all duration-300 border border-transparent hover:border-indigo-200 dark:hover:border-indigo-800 group"
+                      aria-label={item.label}>
+                      <item.icon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -203,7 +177,7 @@ const Contact = () => {
                     name={field.name}
                     required
                     placeholder={field.placeholder}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
                   />
                 </div>
               ))}
@@ -217,14 +191,14 @@ const Contact = () => {
                   rows={5}
                   required
                   placeholder="Your message..."
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed">
+                className="w-full bg-indigo-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed">
                 {loading ? "Sending..." : "Send Message"}
                 {!loading && <Send className="ml-2 w-4 h-4" />}
               </button>

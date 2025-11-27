@@ -49,17 +49,16 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
           ? "bg-white/30 dark:bg-gray-900/30 backdrop-blur-lg border-b border-white/20 dark:border-gray-800/40 shadow-md"
           : "bg-transparent"
-      }`}>
+        }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo/Name */}
           <a
             href="#hero"
-            className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+            className="text-xl font-bold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
             Mozammil Raja
           </a>
 
@@ -71,16 +70,15 @@ const Header = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative text-base font-semibold tracking-wide transition-colors ${
-                    isActive
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
-                  }`}>
+                  className={`relative text-base font-semibold tracking-wide transition-colors ${isActive
+                      ? "text-indigo-600 dark:text-indigo-400"
+                      : "text-gray-800 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400"
+                    }`}>
                   {item.label}
                   {isActive && (
                     <motion.span
                       layoutId="activeSection"
-                      className="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-600 dark:bg-blue-400 rounded"
+                      className="absolute left-0 -bottom-1 h-[2px] w-full bg-indigo-600 dark:bg-indigo-400 rounded"
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -115,11 +113,10 @@ const Header = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`block px-6 py-3 text-sm font-medium transition-colors ${
-                    isActive
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-                  }`}
+                  className={`block px-6 py-3 text-sm font-medium transition-colors ${isActive
+                      ? "text-indigo-600 dark:text-indigo-400"
+                      : "text-gray-700 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400"
+                    }`}
                   onClick={() => setIsOpen(false)}>
                   {item.label}
                 </a>

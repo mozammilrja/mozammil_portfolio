@@ -20,17 +20,17 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium mb-4">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm font-medium mb-4">
             <Zap className="w-4 h-4 mr-2" />
             Featured Work
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Featured Projects
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-indigo-600 dark:bg-indigo-400 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             Here are some of my recent projects that showcase my skills in
             modern web development and problem-solving.
@@ -86,7 +86,7 @@ const Projects = () => {
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full border border-blue-200 dark:border-blue-700">
+                        className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-violet-100 dark:from-indigo-900 dark:to-violet-900 text-indigo-700 dark:text-indigo-300 text-xs font-medium rounded-full border border-indigo-200 dark:border-indigo-700">
                         {tech}
                       </span>
                     ))}
@@ -105,14 +105,14 @@ const Projects = () => {
                       e.stopPropagation();
                       openModal(project);
                     }}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105">
+                    className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm font-medium rounded-lg hover:from-indigo-700 hover:to-violet-700 transition-all duration-200 transform hover:scale-105">
                     View Details
                   </button>
                   <div className="flex space-x-2">
                     <a
                       href={project.demoLink}
                       onClick={(e) => e.stopPropagation()}
-                      className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors transform hover:scale-110"
+                      className="p-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800 transition-colors transform hover:scale-110"
                       title="Live Demo">
                       <ExternalLink size={16} />
                     </a>
@@ -225,7 +225,7 @@ const Projects = () => {
                     <div
                       key={index}
                       className="flex items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                      <div className="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div>
                       <span className="text-gray-700 dark:text-gray-300">
                         {feature}
                       </span>
@@ -243,7 +243,7 @@ const Projects = () => {
                   {selectedProject.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 text-blue-700 dark:text-blue-300 font-medium rounded-full border border-blue-200 dark:border-blue-700/50 hover:from-blue-200 hover:to-purple-200 dark:hover:from-blue-800/60 dark:hover:to-purple-800/60 transition-all">
+                      className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-violet-100 dark:from-indigo-900/50 dark:to-violet-900/50 text-indigo-700 dark:text-indigo-300 font-medium rounded-full border border-indigo-200 dark:border-indigo-700/50 hover:from-indigo-200 hover:to-violet-200 dark:hover:from-indigo-800/60 dark:hover:to-violet-800/60 transition-all">
                       {tech}
                     </span>
                   ))}
@@ -254,7 +254,7 @@ const Projects = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href={selectedProject.demoLink}
-                  className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+                  className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-violet-700 transition-all duration-200 shadow-lg hover:shadow-xl">
                   <ExternalLink className="w-5 h-5 mr-2" />
                   Live Demo
                 </a>

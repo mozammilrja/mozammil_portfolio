@@ -14,11 +14,10 @@ const SocialLink = ({ href, label, icon, gradient }: SocialLinkProps) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
-    className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl shadow-md transition transform ${
-      gradient
-        ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:scale-105"
+    className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl shadow-md transition transform ${gradient
+        ? "bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:scale-105"
         : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white"
-    }`}>
+      }`}>
     {icon}
     {/* {label} */}
   </a>

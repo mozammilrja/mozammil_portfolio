@@ -21,20 +21,24 @@ const TechStack = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+    <section id="techstack" className="py-16 px-4 sm:px-6 lg:px-8 relative">
+      <div className="absolute inset-0 opacity-5 dark:opacity-10 pointer-events-none">
+        <div
+          className="absolute inset-0" />
+      </div>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Tech Stack & Skills
           </h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-indigo-600 dark:bg-indigo-400 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             Technologies and tools I use to build exceptional web applications.
           </p>
         </div>
 
         {/* All Skills Grid */}
-        <div className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8">
+        <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 border border-gray-100 dark:border-gray-700">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">
             All Technologies
           </h3>
