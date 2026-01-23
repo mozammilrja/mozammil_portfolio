@@ -16,6 +16,23 @@
   }
 }
 
+/* Accessibility: Skip to main content link */
+.skip-link {
+  @apply absolute -top-10 left-4 z-[100] px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md transition-all focus:top-4;
+}
+
+/* Improved focus states for accessibility */
+@layer base {
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-indigo-500 dark:outline-indigo-400;
+  }
+
+  /* Remove default focus outline, use focus-visible instead */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -79,4 +96,32 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  @apply absolute -top-10 left-4 z-[100] px-4 py-2 bg-indigo-600 text-white rounded-md font-medium;
+  @apply focus:top-4 transition-all;
+}
+
+/* Focus visible styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  @apply outline-2 outline-offset-2 outline-indigo-500;
+}
+
+/* Smooth scrolling with reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Selection color */
+::selection {
+  @apply bg-indigo-600 text-white;
 }

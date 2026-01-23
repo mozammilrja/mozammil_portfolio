@@ -53,13 +53,12 @@ const Contact = () => {
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Let&apos;s Work Together
+            Let&apos;s Build Something Great
           </h2>
           <div className="w-20 h-1 bg-indigo-600 dark:bg-indigo-400 mx-auto mb-4" />
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            I&apos;m currently looking for new opportunities. Whether you have a
-            question or just want to say hi, I&apos;ll try my best to get back
-            to you!
+            Looking for a frontend developer who ships fast and builds for scale?
+            I&apos;m available for full-time roles and select freelance projects.
           </p>
         </div>
 

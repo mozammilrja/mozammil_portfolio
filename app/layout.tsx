@@ -7,23 +7,24 @@ import React from "react";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Mozammil Raja | Frontend Developer | React.js | Next.js | TypeScript",
+  title: "Mozammil Raja — Full-Stack Developer | React, Next.js, Node.js",
   description:
-    "Portfolio of Mozammil Raja – Frontend Developer specializing in React.js, Next.js, TypeScript, Web3, and building scalable web applications.",
+    "4+ years building high-performance web apps with React, Next.js, Node.js & MongoDB. View my projects and hire me for your next role.",
   metadataBase: new URL("https://mozammil-portfolio.vercel.app/"),
   alternates: {
     canonical: "https://mozammil-portfolio.vercel.app/",
   },
+  keywords: ["Full-Stack Developer", "Frontend Developer", "React Developer", "Next.js Developer", "Node.js Developer", "MongoDB", "TypeScript", "Delhi NCR", "Remote Developer"],
+  authors: [{ name: "Mozammil Raja", url: "https://mozammil-portfolio.vercel.app" }],
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/favicon.avif",
   },
   openGraph: {
-    title:
-      "Mozammil Raja | Frontend Developer | React.js | Next.js | TypeScript",
+    title: "Mozammil Raja — Full-Stack Developer | React, Next.js, Node.js",
     description:
-      "Building scalable and accessible web apps with React.js, Next.js, and TypeScript.",
+      "4+ years building web apps with React, Next.js, Node.js & MongoDB. View projects and hire me.",
     url: "https://mozammil-portfolio.vercel.app/",
     siteName: "Mozammil Raja Portfolio",
     images: [
@@ -39,11 +40,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Mozammil Raja | Frontend Developer | React.js | Next.js | TypeScript",
+    title: "Mozammil Raja — Full-Stack Developer | React, Next.js, Node.js",
     description:
-      "Frontend portfolio built with Next.js, TypeScript, and React.js showcasing modern web development projects.",
+      "4+ years building web apps with React, Next.js, Node.js & MongoDB. View projects and hire me.",
     images: ["/profile.avif"],
+    creator: "@MozammilRaja",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -57,12 +69,13 @@ export default function RootLayout({
     "@type": "Person",
     name: "Mozammil Raja",
     url: "https://mozammil-portfolio.vercel.app/",
-    jobTitle: "Frontend Developer",
+    jobTitle: "Full-Stack Developer",
     sameAs: [
       "https://www.linkedin.com/in/mozammil-raja/",
       "https://github.com/mozammilrja",
     ],
     image: "https://mozammil-portfolio.vercel.app/profile.avif",
+    knowsAbout: ["React", "Next.js", "Node.js", "MongoDB", "TypeScript", "JavaScript"],
   };
 
   return (
@@ -86,6 +99,10 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem={true}
           disableTransitionOnChange={false}>
+          {/* Skip link for keyboard accessibility */}
+          <a href="#hero" className="skip-link">
+            Skip to main content
+          </a>
           <main role="main">{children}</main>
         </ThemeProvider>
       </body>

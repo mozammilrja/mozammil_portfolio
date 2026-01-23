@@ -1,20 +1,27 @@
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
-// Lazy load all components
-const Header = dynamic(() => import("@/components/Header"), { ssr: false });
-const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
-const About = dynamic(() => import("@/components/About"), { ssr: false });
+// Critical above-the-fold components - SSR enabled for SEO & LCP
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+
+// Below-the-fold components - lazy loaded for performance
+const About = dynamic(() => import("@/components/About"), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800 rounded-2xl mx-4 my-8" />,
+});
 const Experience = dynamic(() => import("@/components/Experience"), {
-  ssr: false,
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800 rounded-2xl mx-4 my-8" />,
 });
 const Projects = dynamic(() => import("@/components/Projects"), {
-  ssr: false,
+  loading: () => <div className="min-h-[600px] animate-pulse bg-gray-100 dark:bg-gray-800 rounded-2xl mx-4 my-8" />,
 });
 const TechStack = dynamic(() => import("@/components/TechStack"), {
-  ssr: false,
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 dark:bg-gray-800 rounded-2xl mx-4 my-8" />,
 });
-const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
-const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
+const Contact = dynamic(() => import("@/components/Contact"), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800 rounded-2xl mx-4 my-8" />,
+});
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (

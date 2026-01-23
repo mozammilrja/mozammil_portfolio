@@ -76,9 +76,22 @@ const Projects = () => {
 
               {/* Project Content */}
               <div className="p-6">
-                <p className="text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
+                <p className="text-gray-600 dark:text-gray-300 line-clamp-2 mb-4">
                   {project.description}
                 </p>
+
+                {/* Project Highlights - Honest labels */}
+                {'highlights' in project && project.highlights && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {(project as { highlights: string[] }).highlights.map((highlight: string, i: number) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded">
+                        {highlight}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {/* Tech Stack */}
                 <div className="mb-4">
@@ -175,30 +188,35 @@ const Projects = () => {
 
             {/* Modal Content */}
             <div className="p-8">
-              {/* Stats */}
-              {/* <div className="grid grid-cols-3 gap-4 mb-8">
-                {Object.entries(selectedProject.stats).map(
-                  ([key, value], index) => (
-                    <div
+              {/* Project Highlights */}
+              {'highlights' in selectedProject && selectedProject.highlights && (
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {(selectedProject as { highlights: string[] }).highlights.map((highlight: string, index: number) => (
+                    <span
                       key={index}
-                      className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl">
-                      <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {value}
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 capitalize">
-                        {key}
-                      </div>
-                    </div>
-                  )
-                )}
-              </div> */}
+                      className="px-4 py-2 bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/50 dark:to-violet-900/50 text-indigo-700 dark:text-indigo-300 font-medium rounded-lg border border-indigo-200 dark:border-indigo-700/50">
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* My Role */}
+              {'role' in selectedProject && selectedProject.role && (
+                <div className="mb-8 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <span className="font-semibold text-gray-900 dark:text-white">My Role: </span>
+                    {(selectedProject as { role: string }).role}
+                  </p>
+                </div>
+              )}
 
               {/* Problem & Solution */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                    Problem
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div>
+                    Why I Built This
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     {selectedProject.problem}
@@ -207,7 +225,7 @@ const Projects = () => {
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                    Solution
+                    How I Built It
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     {selectedProject.solution}
