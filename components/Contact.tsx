@@ -1,214 +1,111 @@
 "use client";
-import { useRef, useState, useCallback } from "react";
-import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
   MapPin,
   Github,
   Linkedin,
-  Send,
-  CheckCircle,
   Briefcase,
 } from "lucide-react";
 import { LINKS } from "@/lib/data/links";
 
 const Contact = () => {
-  const form = useRef<HTMLFormElement>(null);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const sendEmail = useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      if (!form.current) return;
-
-      setLoading(true);
-
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-          form.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-        )
-        .then(() => {
-          setSuccess(true);
-          form.current?.reset();
-        })
-        .catch((error) => console.error("FAILED...", error))
-        .finally(() => {
-          setLoading(false);
-          setTimeout(() => setSuccess(false), 5000);
-        });
-    },
-    [form]
-  );
-
   return (
     <section
       id="contact"
-      className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div className="max-w-5xl mx-auto">
         {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
             Let&apos;s Build Something Great
           </h2>
-          <div className="w-20 h-1 bg-indigo-600 dark:bg-indigo-400 mx-auto mb-4" />
-          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+          <div className="w-24 h-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mx-auto mb-6 rounded-full" />
+          <p className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
             Looking for a frontend developer who ships fast and builds for scale?
             I&apos;m available for full-time roles and select freelance projects.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 overflow-hidden">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                Get In Touch
-              </h3>
+        {/* Contact Info Card */}
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 sm:p-12 border border-gray-100 dark:border-gray-700">
+          <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            Get In Touch
+          </h3>
 
-              <div className="space-y-6">
-                {[
-                  {
-                    label: "Email",
-                    href: LINKS.emailHref,
-                    icon: Mail,
-                    value: LINKS.email,
-                  },
-                  {
-                    label: "Phone",
-                    href: LINKS.phoneHref,
-                    icon: Phone,
-                    value: LINKS.phone,
-                  },
-                  {
-                    label: "Location",
-                    href: "#",
-                    icon: MapPin,
-                    value: LINKS.location,
-                  },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 bg-gray-50 dark:bg-gray-900/50 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border border-transparent hover:border-indigo-100 dark:hover:border-indigo-900 group"
-                      aria-label={item.label}>
-                      <div
-                        className="w-12 h-12 flex-shrink-0 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                          {item.label}
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-300 truncate">
-                          {item.value}
-                        </p>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
-                  Connect with me
-                </h4>
-                <div className="flex space-x-4">
-                  {[
-                    { href: LINKS.github, icon: Github, label: "GitHub" },
-                    { href: LINKS.linkedin, icon: Linkedin, label: "LinkedIn" },
-                    { href: LINKS.hireMe, icon: Briefcase, label: "Hire Me" },
-                  ].map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 flex-shrink-0 bg-gray-50 dark:bg-gray-900/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 rounded-xl flex items-center justify-center hover:scale-110 transform transition-all duration-300 border border-transparent hover:border-indigo-200 dark:hover:border-indigo-800 group"
-                      aria-label={item.label}>
-                      <item.icon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              {
+                label: "Email",
+                href: LINKS.emailHref,
+                icon: Mail,
+                value: LINKS.email,
+              },
+              {
+                label: "Phone",
+                href: LINKS.phoneHref,
+                icon: Phone,
+                value: LINKS.phone,
+              },
+              {
+                label: "Location",
+                href: "#",
+                icon: MapPin,
+                value: LINKS.location,
+              },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl transition-all duration-300 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/50 dark:to-gray-900/30 hover:from-indigo-50 hover:to-purple-50 dark:hover:from-indigo-900/20 dark:hover:to-purple-900/20 border-2 border-transparent hover:border-indigo-200 dark:hover:border-indigo-800 group transform hover:-translate-y-1 hover:shadow-lg"
+                  aria-label={item.label}>
+                  <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-indigo-500 to-purple-600 dark:from-indigo-600 dark:to-purple-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-bold text-lg text-gray-900 dark:text-white mb-1">
+                      {item.label}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm break-words">
+                      {item.value}
+                    </p>
+                  </div>
+                </a>
+              );
+            })}
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-              Send a Message
-            </h3>
-            <form ref={form} onSubmit={sendEmail} className="space-y-6">
+          {/* Call to Action */}
+          <div className="text-center mb-8">
+            <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">
+              Ready to collaborate? Let&apos;s connect and discuss your project!
+            </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-6 text-center">
+              Connect with me
+            </h4>
+            <div className="flex justify-center space-x-4">
               {[
-                {
-                  label: "Name",
-                  type: "text",
-                  name: "name",
-                  placeholder: "Your name",
-                },
-                {
-                  label: "Email",
-                  type: "email",
-                  name: "email",
-                  placeholder: "your.email@example.com",
-                },
-                {
-                  label: "Subject",
-                  type: "text",
-                  name: "subject",
-                  placeholder: "What's this about?",
-                },
-              ].map((field) => (
-                <div key={field.name}>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    {field.label}
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    required
-                    placeholder={field.placeholder}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
-                  />
-                </div>
+                { href: LINKS.github, icon: Github, label: "GitHub" },
+                { href: LINKS.linkedin, icon: Linkedin, label: "LinkedIn" },
+                { href: LINKS.hireMe, icon: Briefcase, label: "Hire Me" },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 flex-shrink-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 hover:from-indigo-500 hover:to-purple-600 dark:hover:from-indigo-600 dark:hover:to-purple-700 rounded-2xl flex items-center justify-center hover:scale-110 transform transition-all duration-300 border-2 border-transparent hover:border-indigo-300 dark:hover:border-indigo-600 group shadow-md hover:shadow-xl"
+                  aria-label={item.label}>
+                  <item.icon className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-white transition-colors" />
+                </a>
               ))}
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="Your message..."
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-indigo-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed">
-                {loading ? "Sending..." : "Send Message"}
-                {!loading && <Send className="ml-2 w-4 h-4" />}
-              </button>
-
-              {success && (
-                <div className="flex items-center mt-4 text-green-600 font-medium">
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  Message sent successfully!
-                </div>
-              )}
-            </form>
+            </div>
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@
 📍 Based in **Gurugram, Haryana, India**  
 ⚡ Immediate Joiner | Open to Opportunities in **Delhi NCR**  
 
+🌐 **[View Live Portfolio →](https://mozammil-portfolio.vercel.app)**  
+
 ---
 
 ## 💼 About Me  
@@ -52,6 +54,7 @@ A **multi-tenant invoicing app** designed for SaaS platforms with:
 
 - 📧 Email: [mozammilraja0218@gmail.com](mailto:mozammilraja0218@gmail.com)  
 - 💼 LinkedIn: [linkedin.com/in/mozammil](https://www.linkedin.com/in/mozammil)  
-- 💻 Portfolio: [github.com/mozammilrja](https://github.com/mozammilrja)  
+- 💻 Portfolio: [mozammil-portfolio.vercel.app](https://mozammil-portfolio.vercel.app)  
+- 🐙 GitHub: [github.com/mozammilrja](https://github.com/mozammilrja)  
 
 ---
